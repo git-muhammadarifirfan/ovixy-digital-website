@@ -36,8 +36,7 @@ export function useLenis() {
       lenis.raf(time * 1000);
     };
     gsap.ticker.add(gsapTick);
-    gsap.ticker.lagSmoothing(0);
-
+    
     // Recalculate ScrollTrigger parameters on load/interact
     const resizeHandler = () => {
       ScrollTrigger.refresh();

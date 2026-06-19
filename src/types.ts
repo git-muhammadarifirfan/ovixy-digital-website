@@ -6,7 +6,7 @@
 export interface Project {
   id: string;
   name: string;
-  category: "Web Dev" | "Mobile App" | "Branding" | "UI/UX" | "F&B" | "Jasa" | "Retail" | "App" | "Media" | "SaaS";
+  category: "Web Dev" | "Mobile App" | "Branding" | "UI/UX" | "F&B" | "Jasa" | "Retail" | "App" | "Media" | "SaaS" | "Kontraktor" | "Edukasi";
   filterCategory: "Web Dev" | "Mobile App" | "Branding" | "UI/UX" | "All";
   description: string;
   image: string;

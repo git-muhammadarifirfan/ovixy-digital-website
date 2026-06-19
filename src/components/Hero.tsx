@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ArrowRight, MessageSquare } from "lucide-react";
-import lottie from "lottie-web";
 import lottieAnimation from "./hero-lottie-v2.json";
 
 interface HeroProps {
@@ -71,18 +70,24 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
     }
   }, [rotatorIndex]);
 
-  // Load Lottie Web Dev Loop Animation
+  // Load Lottie Web Dev Loop Animation dynamically to save bundle size
   useEffect(() => {
+    let anim: any = null;
     if (isReady && lottieContainerRef.current) {
-      const anim = lottie.loadAnimation({
-        container: lottieContainerRef.current,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        animationData: lottieAnimation,
+      // Dynamically import Lottie only when needed
+      import("lottie-web").then((lottieModule) => {
+        const lottie = lottieModule.default;
+        anim = lottie.loadAnimation({
+          container: lottieContainerRef.current as HTMLDivElement,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: lottieAnimation,
+        });
       });
-
-      return () => anim.destroy();
+      return () => {
+        if (anim) anim.destroy();
+      };
     }
   }, [isReady]);
 

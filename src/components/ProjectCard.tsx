@@ -80,6 +80,8 @@ export default function ProjectCard({
             src={image}
             alt={dataAlt}
             referrerPolicy="no-referrer"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-all duration-500 filter grayscale group-hover:grayscale-0 group-hover:scale-105"
           />
         </div>
@@ -132,6 +134,8 @@ export default function ProjectCard({
               <img
                 src={image}
                 alt={dataAlt}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               {/* Neo-brutalist sticker/badge overlay */}
