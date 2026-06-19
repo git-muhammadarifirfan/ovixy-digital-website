@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "Bricolage Grotesque", sans-serif;
+  
+  --color-surface-container: #eeeeee;
+  --color-background: #f9f9f9;
+  --color-surface: #f9f9f9;
+  --color-on-surface: #1b1b1b;
+  --color-text-muted: #777777;
+}
+
+@layer utilities {
+  .neo-shadow {
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  }
+  .neo-shadow-hover {
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  }
+  .neo-shadow-lg {
+    box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+  }
+  .neo-border {
+    border: 2px solid #000000;
+  }
+  .neo-border-thick {
+    border: 4px solid #000000;
+  }
+}
+
+/* Custom lenis adjustments */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Hide scrollbar globally for a clean canvas */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Custom Neo-Brutalist selection highlight */
+::selection {
+  background-color: #a3e635;
+  color: #000000;
+}
+::-moz-selection {
+  background-color: #a3e635;
+  color: #000000;
+}
+
+/* Prevent unstyled flash of content (FOUC) before GSAP runs */
+.hero-fade, .project-card, .service-card, .pricing-card, .testimonial-card, .faq-card-item, h2, h2 + p {
+  opacity: 0;
+}
+
+

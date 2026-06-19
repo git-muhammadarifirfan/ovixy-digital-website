@@ -1,0 +1,6 @@
+export interface ProjectType { id: number; title: string; category: string; type: string; image: string; description: string; }
+export const projectsData: ProjectType[] = [
+  { id: 1, title: 'Frozen Food Menu', category: 'KULINER', type: 'Katalog Online', image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800', description: 'Katalog digital instan dengan tombol order tertarget langsung menuju WhatsApp.' },
+  { id: 2, title: 'Laundry Hub', category: 'JASA', type: 'Landing Page', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800', description: 'Landing page rapi untuk jasa laundry dan dekorasi dengan peta lokasi bisnis terintegrasi.' },
+  { id: 3, title: 'Interior Project Showcase', category: 'KONTRAKTOR', type: 'Company Profile', image: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=800', description: 'Company profile interaktif dengan integrasi database realtime Google Sheets.' }
+];

@@ -1,0 +1,8 @@
+{
+  "name": "Ovixy Digital",
+  "description": "A highly polished Neo-Brutalist digital studio portfolio built with React, GSAP, and Lenis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
