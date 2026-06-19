@@ -94,109 +94,43 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
   useEffect(() => {
     if (!isReady) return;
 
-    // Use GSAP context for clean garbage collection on component unmount
     const ctx = gsap.context(() => {
-      // Reveal title static words with elastic pop
+      // Very simple, lightweight pop-in for the H1 title
       const words = titleRef.current?.querySelectorAll(".word");
       if (words && words.length > 0) {
         gsap.fromTo(
           words,
-          {
-            y: 50,
-            scale: 0,
-            opacity: 1,
-            rotation: 5,
-          },
-          {
-            y: 0,
-            scale: 1,
-            rotation: 0,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: "back.out(1.8)",
-          }
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: "power2.out" }
         );
       }
 
-      // Smooth pop reveal for rotating text container
+      // Simple pop-in for rotator container
       gsap.fromTo(
         ".rotator-container",
-        {
-          scale: 0,
-          rotation: -8,
-        },
-        {
-          scale: 1,
-          rotation: -2,
-          duration: 0.6,
-          ease: "back.out(1.7)",
-          delay: 0.4
-        }
+        { opacity: 0, scale: 0.95 },
+        { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out", delay: 0.2 }
       );
 
-      // Smooth bouncy reveal for description & CTA buttons
+      // Simple fade-in and slight slide up for text and buttons
       gsap.fromTo(
         ".hero-fade",
-        {
-          y: 40,
-          scale: 0,
-          opacity: 1,
-          rotation: -3,
-        },
-        {
-          y: 0,
-          scale: 1,
-          rotation: 0,
-          duration: 0.6,
-          stagger: 0.12,
-          ease: "back.out(1.6)",
-          delay: 0.45,
-        }
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power2.out", delay: 0.3 }
       );
 
-      // Animate decorative device mock image container scale & bounce
+      // Simple scale-in for decorative Lottie container
       if (decorativeImageRef.current) {
         gsap.fromTo(
           decorativeImageRef.current,
-          {
-            scale: 0,
-            opacity: 1,
-            y: 50,
-            rotation: 4,
-          },
-          {
-            scale: 1,
-            y: 0,
-            rotation: 0,
-            duration: 0.7,
-            ease: "back.out(1.6)",
-            delay: 0.65,
-          }
+          { opacity: 0, scale: 0.95 },
+          { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out", delay: 0.4 }
         );
       }
+      
+      // Removed parallax ScrollTrigger on hero-parallax-bg and hero-parallax-img
+      // to completely eliminate scroll glitching and jank on mobile.
 
-      // Parallax smooth ScrollTrigger animations for background and images without layout shift
-      gsap.to(".hero-parallax-bg", {
-        y: 80,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
-
-      gsap.to(".hero-parallax-img", {
-        y: -40,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
     }, containerRef);
 
     return () => ctx.revert();

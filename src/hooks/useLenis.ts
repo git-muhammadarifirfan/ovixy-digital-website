@@ -15,6 +15,15 @@ export function useLenis() {
     // Register scroll trigger
     gsap.registerPlugin(ScrollTrigger);
 
+    // Completely disable Lenis on mobile/touch devices for native performance
+    const isMobile = window.matchMedia("(max-width: 768px)").matches || 
+                     ("ontouchstart" in window) || 
+                     (navigator.maxTouchPoints > 0);
+
+    if (isMobile) {
+      return; // Do nothing on mobile, rely completely on native scrolling
+    }
+
     const lenis = new Lenis({
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
