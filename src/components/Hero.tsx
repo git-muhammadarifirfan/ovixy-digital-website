@@ -73,23 +73,43 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
   // Load Lottie Web Dev Loop Animation dynamically to save bundle size
   useEffect(() => {
     let anim: any = null;
+    let observer: IntersectionObserver | null = null;
+
     if (isReady && lottieContainerRef.current) {
-      // Use standard Lottie with canvas renderer for vastly superior scroll performance on mobile
       import("lottie-web").then((lottieModule) => {
         const lottie = lottieModule.default;
         anim = lottie.loadAnimation({
           container: lottieContainerRef.current as HTMLDivElement,
-          renderer: "canvas", // Switch to canvas renderer! SVG DOM nodes cause scroll jank on mobile
+          renderer: "svg", // Reverted to SVG to fix visibility issue
           loop: true,
           autoplay: true,
           animationData: lottieAnimation,
-          rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice',
-            clearCanvas: true
-          }
         });
+
+        // Pause Lottie animation when it's off-screen to save CPU/Battery and prevent scroll stuttering
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                anim?.play();
+              } else {
+                anim?.pause();
+              }
+            });
+          },
+          { threshold: 0.01 }
+        );
+
+        if (lottieContainerRef.current) {
+          observer.observe(lottieContainerRef.current);
+        }
       });
+
       return () => {
+        if (observer && lottieContainerRef.current) {
+          observer.unobserve(lottieContainerRef.current);
+          observer.disconnect();
+        }
         if (anim) anim.destroy();
       };
     }
