@@ -74,15 +74,19 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
   useEffect(() => {
     let anim: any = null;
     if (isReady && lottieContainerRef.current) {
-      // Dynamically import Lottie only when needed
+      // Use standard Lottie with canvas renderer for vastly superior scroll performance on mobile
       import("lottie-web").then((lottieModule) => {
         const lottie = lottieModule.default;
         anim = lottie.loadAnimation({
           container: lottieContainerRef.current as HTMLDivElement,
-          renderer: "svg",
+          renderer: "canvas", // Switch to canvas renderer! SVG DOM nodes cause scroll jank on mobile
           loop: true,
           autoplay: true,
           animationData: lottieAnimation,
+          rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice',
+            clearCanvas: true
+          }
         });
       });
       return () => {
