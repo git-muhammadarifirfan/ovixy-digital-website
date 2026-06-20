@@ -21,6 +21,7 @@ import ProjectCard from "./components/ProjectCard";
 import PricingCard from "./components/PricingCard";
 import FaqSection from "./components/FaqSection";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 
 // Hooks & Data
 import { useLenis } from "./hooks/useLenis";
@@ -361,7 +362,10 @@ export default function App() {
     "UI/UX"
   ];
 
-  const isProjectPage = currentPath.replace(/\/$/, "") === "/project";
+  const cleanPath = currentPath.replace(/\/$/, "") || "/";
+  const isHomePage = cleanPath === "/";
+  const isProjectPage = cleanPath === "/project";
+  const isNotFound = !isHomePage && !isProjectPage;
 
   const displayedProjects = isProjectPage
     ? (activeFilter === "All" ? projectsData : projectsData.filter(proj => proj.filterCategory === activeFilter))
@@ -404,7 +408,7 @@ export default function App() {
       <Navbar onNavClick={handleNavClick} onConsultClick={handleConsultation} />
 
       {/* 3. Hero Section Area (Home only) */}
-      {!isProjectPage && (
+      {isHomePage && (
         <Hero
           isReady={isReady}
           onStartClick={() => handleScrollTo("#portofolio")}
@@ -415,7 +419,9 @@ export default function App() {
       {/* Main container */}
       <main className="max-w-5xl mx-auto px-6 pb-20 relative">
 
-        {isProjectPage ? (
+        {isNotFound ? (
+          <NotFound onGoHome={navigate} />
+        ) : isProjectPage ? (
           /* ALL PROJECTS PAGE VIEW (/project) */
           <section id="portofolio" className="pt-28 pb-16 projects-area text-start">
             <div className="flex flex-col mb-10 max-w-xl">
