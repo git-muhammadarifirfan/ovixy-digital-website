@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Mencegah crawler mengindeks direktori private/sistem jika bocor
+Disallow: /node_modules/
+Disallow: /src/
+
+# Menyediakan jalur langsung ke sitemap agar SEO langsung terbaca
+Sitemap: https://ovixydigital.com/sitemap.xml
