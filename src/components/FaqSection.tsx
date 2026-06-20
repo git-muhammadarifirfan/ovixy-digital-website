@@ -68,6 +68,8 @@ export default function FaqSection() {
                       {/* Accordion Header Trigger */}
                       <button
                         onClick={() => toggleFaq(item.id)}
+                        aria-expanded={isOpen}
+                        aria-controls={`faq-answer-${item.id}`}
                         className="w-full px-6 py-5 flex items-center justify-between text-start font-sans font-black text-base md:text-lg text-black hover:bg-neutral-50 transition-colors cursor-pointer select-none gap-4"
                       >
                         <span className="flex items-center gap-3">
@@ -85,6 +87,7 @@ export default function FaqSection() {
 
                       {/* Accordion Body Answer */}
                       <div
+                        id={`faq-answer-${item.id}`}
                         className={`transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden ${
                           isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                         }`}

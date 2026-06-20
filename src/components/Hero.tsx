@@ -74,10 +74,19 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
   useEffect(() => {
     let anim: any = null;
     let observer: IntersectionObserver | null = null;
+    let isMounted = true;
 
     if (isReady && lottieContainerRef.current) {
+      // Clear container first to prevent duplication
+      lottieContainerRef.current.innerHTML = "";
+
       // Dynamically import Lottie only when needed
       import("lottie-web").then((lottieModule) => {
+        if (!isMounted || !lottieContainerRef.current) return;
+
+        // Clear again just in case another promise resolved
+        lottieContainerRef.current.innerHTML = "";
+
         const lottie = lottieModule.default;
         anim = lottie.loadAnimation({
           container: lottieContainerRef.current as HTMLDivElement,
@@ -85,6 +94,9 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
           loop: true,
           autoplay: true,
           animationData: lottieAnimation,
+          rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice",
+          },
         });
 
         // Pause Lottie animation when it's off-screen to save CPU/Battery and prevent scroll stuttering
@@ -106,11 +118,15 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
         }
       });
       return () => {
+        isMounted = false;
         if (observer && lottieContainerRef.current) {
           observer.unobserve(lottieContainerRef.current);
           observer.disconnect();
         }
         if (anim) anim.destroy();
+        // Clear container on unmount
+        const container = lottieContainerRef.current;
+        if (container) container.innerHTML = "";
       };
     }
   }, [isReady]);
@@ -126,18 +142,18 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
         gsap.fromTo(
           words,
           {
-            y: 50,
+            y: 25,
             scale: 0,
             opacity: 1,
-            rotation: 5,
+            rotation: -2,
           },
           {
             y: 0,
             scale: 1,
             rotation: 0,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: "back.out(1.8)",
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "back.out(1.5)",
           }
         );
       }
@@ -154,7 +170,7 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
           rotation: -2,
           duration: 0.6,
           ease: "back.out(1.7)",
-          delay: 0.4
+          delay: 0.8
         }
       );
 
@@ -162,19 +178,19 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
       gsap.fromTo(
         ".hero-fade",
         {
-          y: 40,
+          y: 25,
           scale: 0,
           opacity: 1,
-          rotation: -3,
+          rotation: -2,
         },
         {
           y: 0,
           scale: 1,
           rotation: 0,
           duration: 0.6,
-          stagger: 0.12,
-          ease: "back.out(1.6)",
-          delay: 0.45,
+          stagger: 0.1,
+          ease: "back.out(1.5)",
+          delay: 1.0,
         }
       );
 
@@ -185,16 +201,16 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
           {
             scale: 0,
             opacity: 1,
-            y: 50,
-            rotation: 4,
+            y: 25,
+            rotation: -2,
           },
           {
             scale: 1,
             y: 0,
             rotation: 0,
-            duration: 0.7,
-            ease: "back.out(1.6)",
-            delay: 0.65,
+            duration: 0.6,
+            ease: "back.out(1.5)",
+            delay: 1.3,
           }
         );
       }
@@ -245,7 +261,7 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
         className="font-sans text-[32px] sm:text-4xl md:text-5xl pb-4 lg:text-6xl font-extrabold text-black leading-[1.3] max-w-[950px] mb-6 sm:mb-8 flex flex-wrap justify-center items-center gap-x-2.5 gap-y-2.5 sm:gap-x-3.5 sm:gap-y-3.5 overflow-hidden"
       >
         {wordsArray.map((word, index) => (
-          <span key={index} className="inline-block relative overflow-hidden py-0.5 sm:py-1">
+          <span key={index} className="inline-block relative py-1 sm:py-2">
             <span
               className="word inline-block"
               style={{ opacity: 0 }} // start hidden to prevent flashing glitch
@@ -296,7 +312,7 @@ export default function Hero({ onStartClick, onConsultClick, isReady }: HeroProp
       >
         <div
           ref={lottieContainerRef}
-          className="w-full h-full flex items-center justify-center p-4 sm:p-8 scale-100 hero-parallax-img"
+          className="w-full h-full flex items-center justify-center scale-100 hero-parallax-img [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover"
         />
       </div>
     </section>

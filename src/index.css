@@ -30,6 +30,10 @@
 }
 
 /* Custom lenis adjustments */
+html {
+  scroll-behavior: smooth;
+}
+
 html.lenis {
   height: auto;
 }

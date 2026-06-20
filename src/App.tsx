@@ -49,6 +49,25 @@ export default function App() {
   const panelRightRef = React.useRef<HTMLDivElement>(null);
   const transitionTextRef = React.useRef<HTMLDivElement>(null);
 
+  // Force scroll to top on refresh/mount
+  React.useEffect(() => {
+    if (window.history && window.history.scrollRestoration) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Ensure scroll is at top when preloader is completed
+  React.useEffect(() => {
+    if (isReady) {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    }
+  }, [isReady]);
+
   // Stagger entry & pop animation for project cards when filters/path change
   React.useEffect(() => {
     if (!isReady) return;
@@ -577,6 +596,10 @@ export default function App() {
                         <img
                           src={t.avatar}
                           alt={t.name}
+                          width={44}
+                          height={44}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover grayscale"
                         />
                       </div>
