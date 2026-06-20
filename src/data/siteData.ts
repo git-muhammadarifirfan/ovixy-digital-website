@@ -263,7 +263,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "custom-app",
     name: "Custom Web & Mobile App",
     description: "Pengembangan sistem berskala khusus untuk operasional perusahaan maupun prototipe penelitian akademik/skripsi.",
-    price: "Mulai Rp 1jt - 10jt",
+    price: "Mulai Rp 600rb - 10jt",
     features: [
       "Pengembangan Eksklusif dari Awal",
       "Skema Biaya Fleksibel & Transparan",
