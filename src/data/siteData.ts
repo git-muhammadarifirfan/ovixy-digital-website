@@ -207,7 +207,7 @@ export const pricingPlans: PricingPlan[] = [
     description: "Sangat representatif untuk profil bisnis, personal branding, atau peluncuran produk baru secara digital.",
     price: "Rp 300K - 850K",
     features: [
-      "1 Halaman Informasi Utama (Statik)",
+      "1 Halaman Informasi Utama Lengkap",
       "Profil Usaha & Deskripsi Layanan",
       "Galeri Dokumentasi & Testimoni",
       "Integrasi Peta Lokasi Google Maps",
@@ -234,7 +234,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "realtime-profile",
     name: "Company Profile & Realtime DB",
     description: "Meningkatkan kepercayaan klien profesional lewat website interaktif dengan database tersinkronisasi.",
-    price: "Rp 800K - 2Jt",
+    price: "Rp 550K - 1,5Jt",
     features: [
       "Integrasi Realtime Database",
       "Struktur Informasi & Layanan Lengkap",
@@ -262,7 +262,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "custom-app",
     name: "Custom Web & Mobile App",
     description: "Pengembangan sistem berskala khusus untuk operasional perusahaan maupun prototipe penelitian akademik/skripsi.",
-    price: "Mulai Rp 800K",
+    price: "Mulai Rp 1jt - 10jt",
     features: [
       "Pengembangan Eksklusif dari Awal",
       "Skema Biaya Fleksibel & Transparan",
