@@ -6,4 +6,4 @@ Disallow: /node_modules/
 Disallow: /src/
 
 # Menyediakan jalur langsung ke sitemap agar SEO langsung terbaca
-Sitemap: https://ovixydigital.com/sitemap.xml
+Sitemap: https://ovixydigital.my.id/sitemap.xml
