@@ -47,7 +47,7 @@ export const projectsData: Project[] = [
     image: "/company_profile_ui.png",
     dataAlt: "A minimalist e-commerce interface for a retail brand named BoutiqueKu, rendered in stark black and white.",
     features: [
-      "Katalog Proyek Neo-Brutalism Responsif",
+      "Katalog Proyek",
       "Form Konsultasi Proyek Langsung",
       "Profil Tim dan Portofolio Interaktif",
       "Kecepatan Halaman Teroptimasi Maksimal"
@@ -309,7 +309,7 @@ export const testimonialsData: Testimonial[] = [
   },
   {
     id: "t2",
-    quote: "Timnya responsif dan pengerjaannya on-time. Gaya Neo-Brutalis-nya bikin web bengkel kami stand out banget.",
+    quote: "Timnya responsif dan pengerjaannya on-time. Gaya UI nya bikin web bengkel kami stand out banget.",
     name: "Anton Wijaya",
     role: "Founder, TechRepair",
     avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuAR5pcviXWBa3ykLfV4LxEgIOMeza-ub1SUZ3c4sEgTFDeKMPd6EEKKCd55RltiLBXcjFgQTWPJGQCTkQ7YHvwfm5kpaR9QeItAAfy2WTOf5j89zUij4c1UstJaBxyUJH-q9PUdxTHKQHgH0l2y0sMLi36OgyED57Ur-SYGe5kZWku_dLaxSP6yI_4SzLn-QLPk2rOyDLYhmpQzLTsGAicLz7IPQjAeDa1CtvGWDYVgvDQBaWVQfnuAMRLbCpA1VcZpcdNcVOivl2A"
