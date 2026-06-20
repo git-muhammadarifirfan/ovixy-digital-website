@@ -205,7 +205,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "lp-basic",
     name: "Landing Page Basic",
     description: "Sangat representatif untuk profil bisnis, personal branding, atau peluncuran produk baru secara digital.",
-    price: "Rp 300K - 850K",
+    price: "Rp 300K - 550K",
     features: [
       "1 Halaman Informasi Utama Lengkap",
       "Profil Usaha & Deskripsi Layanan",
@@ -218,7 +218,7 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: "catalog-umkm",
     name: "Katalog Online UMKM",
-    description: "Media etalase digital untuk menampilkan produk Anda secara mendetail tanpa potongan biaya pihak ketiga.",
+    description: "Media etalase digital untuk menampilkan produk Anda secara mendetail.",
     price: "Rp 500K - 1.5Jt",
     isPopular: true,
     features: [
@@ -226,7 +226,8 @@ export const pricingPlans: PricingPlan[] = [
       "Kategorisasi & Informasi Harga Jelas",
       "Detail Deskripsi & Galeri Foto",
       "Pemesanan Langsung via WhatsApp",
-      "Kemudahan Distribusi dengan Satu Tautan"
+      "Kemudahan Distribusi dengan Satu Tautan",
+      "Bisa Terintegrasi Payment Gateway"
     ],
     ctaText: "Pilih Paket"
   },
@@ -234,7 +235,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "realtime-profile",
     name: "Company Profile & Realtime DB",
     description: "Meningkatkan kepercayaan klien profesional lewat website interaktif dengan database tersinkronisasi.",
-    price: "Rp 550K - 1,5Jt",
+    price: "Rp 650K - 2Jt",
     features: [
       "Integrasi Realtime Database",
       "Struktur Informasi & Layanan Lengkap",
@@ -248,7 +249,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "pos-app",
     name: "POS & Aplikasi Bisnis",
     description: "Kelola operasional, transaksi kasir, dan pantau stok inventaris secara digital melalui Web atau Android.",
-    price: "Rp 800K - 2Jt",
+    price: "Rp 800K - 2,5Jt",
     features: [
       "Autentikasi Akun Admin yang Aman",
       "Pencatatan Stok & Manajemen Produk",
