@@ -22,6 +22,7 @@ import PricingCard from "./components/PricingCard";
 import FaqSection from "./components/FaqSection";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
+import Inbox from "./components/Inbox";
 
 // Hooks & Data
 import { useLenis } from "./hooks/useLenis";
@@ -365,7 +366,8 @@ export default function App() {
   const cleanPath = currentPath.replace(/\/$/, "") || "/";
   const isHomePage = cleanPath === "/";
   const isProjectPage = cleanPath === "/project";
-  const isNotFound = !isHomePage && !isProjectPage;
+  const isInboxPage = cleanPath === "/inbox";
+  const isNotFound = !isHomePage && !isProjectPage && !isInboxPage;
 
   const displayedProjects = isProjectPage
     ? (activeFilter === "All" ? projectsData : projectsData.filter(proj => proj.filterCategory === activeFilter))
@@ -375,6 +377,10 @@ export default function App() {
     navigate("/project");
   };
 
+  // If on the inbox page, return the full screen app view directly
+  if (isInboxPage) {
+    return <Inbox />;
+  }
 
   return (
     <div className="min-h-screen bg-background relative antialiased [background-size:24px_24px] bg-[radial-gradient(#d1d5db_1.5px,transparent_1.5px)]">
